@@ -1,7 +1,8 @@
 package telcos.imqs;
 
 import net.sf.json.JSONObject;
-import telcos.rabbitMQ.MsgProducer;
+import telcos.imqs.rabbitMQ.MsgProducer;
+
 
 import java.util.logging.Logger;
 
