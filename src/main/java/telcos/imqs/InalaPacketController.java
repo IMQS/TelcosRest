@@ -1,10 +1,8 @@
 package telcos.imqs;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
 import java.util.logging.Logger;
@@ -27,9 +25,20 @@ public class InalaPacketController {
      * Files are pushed into this service.
      * @param zipFile
      */
-    @RequestMapping(value = "/{File}", method =  RequestMethod.PUT)
+    @RequestMapping(value = "/{File}")
     @ResponseBody
-    public void getFile(@PathVariable("File") File zipFile) {
+    public void getFile(@RequestParam(value = "File", required = true) File zipFile) {
+        ZipFilePacket packets = new ZipFilePacket();
+        zipToJson = new ZipToJson();
+        logger.info("Received a new zip file "+zipFile);
+        packets.setFile(zipFile);
+        zipToJson.unzipFile(packets);
+
+    }
+    @RequestMapping( method = RequestMethod.POST)
+    @ResponseBody
+    public void loadFile(@RequestBody File zipFile){
+        System.out.println("We got the zip file!!!........ "+zipFile.isFile());
         ZipFilePacket packets = new ZipFilePacket();
         zipToJson = new ZipToJson();
         logger.info("Received a new zip file "+zipFile);
@@ -38,6 +47,21 @@ public class InalaPacketController {
 
     }
 
+    @RequestMapping(value = "/{name:.+}/{rating:.+}/{director:.+}", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.CREATED)
+    public void addMovie(@PathVariable("name") String name, @PathVariable("rating") String rating,
+                         @PathVariable("director") String director) {
+        System.out.println("Yes the put method executed!!!!");
+    }
+
+  /*  // Request of the form /example/rest
+    @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
+    public
+    @ResponseBody
+    String hello() {
+        return "Hey Its working!!!";
+    }
+*/
 
 
 }
