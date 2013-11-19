@@ -5,8 +5,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import telcos.imqs.ZipFilePacket;
-import telcos.imqs.ZipToJson;
 
 import java.io.File;
 import java.util.logging.Logger;
@@ -29,12 +27,12 @@ public class InalaPacketController {
      * Files are pushed into this service.
      * @param zipFile
      */
-    @RequestMapping( method =  RequestMethod.PUT)
+    @RequestMapping(value = "/{File}", method =  RequestMethod.PUT)
     @ResponseBody
     public void getFile(@PathVariable("File") File zipFile) {
         ZipFilePacket packets = new ZipFilePacket();
         zipToJson = new ZipToJson();
-
+        logger.info("Received a new zip file "+zipFile);
         packets.setFile(zipFile);
         zipToJson.unzipFile(packets);
 

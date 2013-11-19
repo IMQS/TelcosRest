@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class JettyRunner {
     private static Logger logger = Logger.getLogger(JettyRunner.class.getName());
     public static void main(String[] args) throws Exception {
-        Server server = new Server(9001);
+        Server server = new Server(Constants.JETTY_SERVER_PORT);
 
         WebAppContext context = new WebAppContext();
         context.setDescriptor("src/webapp/WEB-INF/web.xml");
@@ -31,6 +31,7 @@ public class JettyRunner {
 
         server.start();
         server.join();
+        logger.info("Telcos REST API started and listening for connections on port "+Constants.JETTY_SERVER_PORT);
     }
 
 }

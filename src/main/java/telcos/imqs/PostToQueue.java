@@ -24,5 +24,6 @@ public class PostToQueue {
     public void sendToQueue(JSONObject data) {
         mq = new MsgProducer();
         boolean send = mq.sendJSON(data);
+        logger.info("Packet sent to queue "+data);
     }
 }

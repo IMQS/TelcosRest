@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>za.co.imqs.telcosRest</groupId>
 	<artifactId>TelcosRest</artifactId>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<version>0.1.1</version>
 	<url>http://maven.apache.org</url>
 
@@ -89,6 +89,12 @@
             <version>1.9.5</version>
             <scope>test</scope>
         </dependency>
+        <!-- Logging -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
 
         <dependency>
             <groupId>za.co.imqs.telcos</groupId>
@@ -111,6 +117,18 @@
 					<testTarget>1.7</testTarget>
 				</configuration>
 			</plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/assemble/descriptor.xml</descriptor>
+                    </descriptors>
+                    <archive>
+                        <manifestFile>src/main/java/META-INF/MANIFEST.MF</manifestFile>
+                    </archive>
+                </configuration>
+            </plugin>
             <plugin>
                 <!-- This plugin is needed for the servlet -->
                 <groupId>org.mortbay.jetty</groupId>

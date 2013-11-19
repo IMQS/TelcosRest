@@ -1,13 +1,13 @@
 package telcos.imqs;
 
 import net.sf.json.JSONObject;
+import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.sql.Timestamp;
-import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -50,12 +50,13 @@ public class ZipToJson {
                     mq.sendToQueue(data);
                     count ++;
                 }
+                logger.info("Found "+count+" entries in csv file");
             }else{
-               logger.warning("File is not a Zip file");
+               logger.warn("File is not a Zip file");
             }
 
         }catch(Exception e ){
-            e.getMessage();
+            logger.error(e.getMessage());
         }
 
     }
