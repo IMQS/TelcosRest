@@ -90,11 +90,7 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>za.co.imqs.telcos</groupId>
-            <artifactId>TeleSpark</artifactId>
-            <version>0.1.4-SNAPSHOT</version>
-        </dependency>
+
 
 
     </dependencies>

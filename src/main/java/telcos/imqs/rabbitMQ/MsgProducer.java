@@ -4,7 +4,8 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import net.sf.json.JSONObject;
-import telcos.utility.Constants;
+import telcos.imqs.Constants;
+
 
 import java.io.IOException;
 

@@ -3,7 +3,7 @@ package telcos.imqs.rabbitMQ;
 import net.sf.json.JSONObject;
 import org.junit.Ignore;
 import org.junit.Test;
-import telcos.rabbitMQ.MsgReceiver;
+
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -16,16 +16,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class rabbitTest {
 
-    //This test contains an infinite while loop to run as a service. it will hold up all the tests if not ignored
-    @Ignore
-    @Test
-    public void testMsgReceiver() {
-        JSONObject js = new JSONObject();
-        js.put("Name", "test");
-        assertTrue(MsgProducer.sendJSON(js));
-        JSONObject obj = MsgReceiver.getJSONReceived();
-        assertEquals(obj.get("Name").toString(), "test");
-    }
+
 
 
     @Test
