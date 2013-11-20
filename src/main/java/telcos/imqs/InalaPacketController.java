@@ -33,18 +33,21 @@ public class InalaPacketController {
         logger.info("Received a new zip file "+zipFile);
         packets.setFile(zipFile);
         zipToJson.unzipFile(packets);
-
     }
+
+    /**
+     * Publishes a service that enables the consumer to load a zip file and it converts it into a
+     * a JSON
+     * @param zipFile
+     */
     @RequestMapping( method = RequestMethod.POST)
     @ResponseBody
     public void loadFile(@RequestBody File zipFile){
-        System.out.println("We got the zip file!!!........ "+zipFile.isFile());
         ZipFilePacket packets = new ZipFilePacket();
         zipToJson = new ZipToJson();
         logger.info("Received a new zip file "+zipFile);
         packets.setFile(zipFile);
         zipToJson.unzipFile(packets);
-
     }
 
     @RequestMapping(value = "/{name:.+}/{rating:.+}/{director:.+}", method = RequestMethod.PUT)

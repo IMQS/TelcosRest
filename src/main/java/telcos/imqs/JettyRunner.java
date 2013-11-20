@@ -30,8 +30,9 @@ public class JettyRunner {
         server.setHandler(context);
 
         server.start();
-        server.join();
         logger.info("Telcos REST API started and listening for connections on port "+Constants.JETTY_SERVER_PORT);
+        server.join();
+
     }
 
 }

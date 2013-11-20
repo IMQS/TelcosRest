@@ -3,6 +3,7 @@ package telcos.imqs;
 import org.apache.commons.collections.map.MultiValueMap;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mortbay.jetty.Server;
 import org.mortbay.jetty.webapp.WebAppContext;
@@ -11,8 +12,6 @@ import org.springframework.http.converter.json.MappingJacksonHttpMessageConverte
 import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,7 +19,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 public class InalaPacketTest {
-    static int testPort = 8008;
+    static int testPort = 8008;        //This is just a port for the test server so don't worry too much!
     static Server server = new Server(testPort);
     static String contextPath = "";
     static String rootURL = "http://localhost:" + testPort + contextPath;
@@ -36,8 +35,6 @@ public class InalaPacketTest {
         context.setResourceBase("src/main/webapp");
         context.setContextPath(contextPath);
         context.setParentLoaderPriority(true);
-
-
 
         server.setHandler(context);
 
@@ -62,6 +59,7 @@ public class InalaPacketTest {
     }
 
     @Test
+    @Ignore
     public void CollectionReadTest() {
     try{
    /*     InalaPacketController packet = new InalaPacketController();
@@ -90,14 +88,14 @@ public class InalaPacketTest {
         vars.put("File2",zip.getName());
         rest.postForObject(uri,zip,File.class,null);
     }
-    @Test
+ /*   @Test
     public void itemPut() throws Exception{
         // Add a movie to the database
         rest.put(rootURL + "/telcosRest/misc/Kill Bill Volume 2/pg16/Quentin Tarantino",null);
 
-    }
+    }*/
 
-    public File getZip(String fileName){
+  /*  public File getZip(String fileName){
         Path zipFile = Paths.get(fileName);
         File zis = null;
         try{
@@ -108,6 +106,6 @@ public class InalaPacketTest {
         }
         return zis;
     }
-
+*/
 
 }
