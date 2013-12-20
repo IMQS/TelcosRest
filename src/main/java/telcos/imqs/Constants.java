@@ -15,7 +15,9 @@ public final class Constants {
      */
     public static final String RABBIT_QUEUE_RAW_ALARMS = "TelcosRawAlarms";
     public static final String RABBIT_EXCHANGE_NAME = "RawExchange";
-    public static final String RABBIT_HOST = "Tunafix";
+    //ND updating this from Tunafix to localhost so we can deploy and run in any environment
+    // - Dev, QA and/or Production
+    public static final String RABBIT_HOST = "127.0.0.1";
     public static final String RABBIT_QUEUE_RAW_INPUT = "TelcosRawInput";
 
 }
